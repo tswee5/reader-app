@@ -18,6 +18,14 @@ export async function middleware(req: NextRequest) {
   const supabase = createMiddlewareClient<Database>({ req, res });
   
   try {
+    // Check if this is the home page route
+    const isHomePage = req.nextUrl.pathname === '/';
+    
+    // If it's the home page, just return the response without further processing
+    if (isHomePage) {
+      return res;
+    }
+    
     // Determine if the route requires authentication
     const isAuthRoute = req.nextUrl.pathname.startsWith('/api/ai/') || 
                         req.nextUrl.pathname.startsWith('/api/user/') || 
@@ -81,7 +89,6 @@ export const config = {
     '/api/tts/:path*',
     '/api/parse-article',
     '/api/cookie-cleanup',
-    '/',
     '/auth-debug',
   ],
 }; 

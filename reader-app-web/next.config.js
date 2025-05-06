@@ -19,12 +19,24 @@ const nextConfig = {
   
   // Enable experimental features if needed
   experimental: {
-    // Add any experimental features required here
+    // Enable app directory
+    appDir: true,
   },
 
   // Add image domains for next/image
   images: {
     domains: ['brducmfdyegwjdpdmnfb.supabase.co'],
+  },
+
+  // Add redirects or rewrites if needed
+  async rewrites() {
+    return [
+      // Ensure the root path works
+      {
+        source: '/',
+        destination: '/index',
+      },
+    ];
   },
 };
 
