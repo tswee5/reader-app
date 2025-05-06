@@ -306,7 +306,7 @@ export function ArticleSpeechPlayer({ articleId, content, title }: ArticleSpeech
       await setFreshAuthCookie();
       
       // Try to get the auth token for header-based authorization as a fallback
-      let headers: Record<string, string> = {
+      const headers: Record<string, string> = {
         "Content-Type": "application/json",
       };
       

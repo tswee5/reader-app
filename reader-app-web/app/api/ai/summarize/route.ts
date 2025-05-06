@@ -78,7 +78,7 @@ export async function POST(req: Request) {
     
     // ENHANCED AUTH APPROACH: Try multiple auth methods in sequence
     let userId: string | undefined;
-    let isTestMode = articleId.startsWith('test-');
+    const isTestMode = articleId.startsWith('test-');
     
     // 1. First, try getUser (fastest way if cookies are working)
     const { data: userData, error: userError } = await supabase.auth.getUser();
